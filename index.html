@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compendio Laboral</title>
+  <meta name="description" content="Busca normas laborales del régimen privado en Perú por palabras o frases.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Arimo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor">
+      <h1>Compendio Laboral</h1>
+      <p class="subtitulo">Encuentra la norma laboral que necesitas: escribe palabras o una frase.</p>
+      <p class="firma">Herramienta de <a href="https://www.linkedin.com/in/juan-domingo-vega-fernandez-b3218918" rel="noopener">Juan Domingo Vega Fernández</a>, abogado laboralista</p>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <div class="aviso" role="note">
+      Herramienta de búsqueda, no es asesoría legal. La base reúne el compendio del MTPE (actualizado al 21/10/2024) y normas posteriores. Verifica la vigencia y el texto oficial en El Peruano antes de citar.
+    </div>
+
+    <section class="buscador" aria-label="Búsqueda">
+      <p class="ayuda">Escribe palabras o una frase entre comillas. Ej.: <code>"cese de servidor"</code> o <code>gratificación julio</code>.</p>
+      <form id="formulario" class="formulario">
+        <label class="sr-only" for="consulta">Consulta</label>
+        <textarea id="consulta" rows="2" placeholder='Ej.: vacaciones truncas   ·   "hostigamiento sexual"'></textarea>
+        <button type="submit" class="boton-principal">Buscar</button>
+      </form>
+      <div class="ejemplos" id="ejemplos"></div>
+
+      <details class="filtros" id="filtros">
+        <summary>Filtros</summary>
+        <div class="filtros-grid">
+          <label>Tipo de norma <select id="f-tipo"></select></label>
+          <label>Origen <select id="f-origen">
+            <option value="todos">Todas</option>
+            <option value="compendio">Compendio (corte 21/10/2024)</option>
+            <option value="posterior">Posteriores al compendio</option>
+            <option value="documento">Guías y documentos orientadores</option>
+          </select></label>
+          <label>Materia <select id="f-seccion"></select></label>
+        </div>
+      </details>
+    </section>
+
+    <section aria-live="polite" aria-label="Resultados">
+      <p id="resumen" class="resumen"></p>
+      <div id="resultados" class="resultados"></div>
+    </section>
+  </main>
+
+  <div id="visor" class="visor" hidden role="dialog" aria-modal="true" aria-labelledby="visor-titulo">
+    <div class="visor-barra">
+      <div class="visor-titulos">
+        <h2 id="visor-titulo"></h2>
+        <p id="visor-sub" class="ayuda"></p>
+      </div>
+      <button type="button" id="visor-cerrar" class="boton">Cerrar</button>
+    </div>
+    <div class="visor-herramientas">
+      <input id="visor-buscar" type="search" placeholder="Buscar dentro de esta norma">
+      <button type="button" id="visor-siguiente" class="boton">Siguiente coincidencia</button>
+      <span id="visor-contador" class="ayuda"></span>
+    </div>
+    <div id="visor-texto" class="visor-texto"></div>
+  </div>
+
+  <footer class="pie contenedor">
+    <p>Búsqueda local: tu consulta no sale de tu computadora. Base generada el <span id="fecha-base"></span>, con <span id="total-normas"></span> normas.</p>
+    <p>Compendio Laboral · <a href="https://www.linkedin.com/in/juan-domingo-vega-fernandez-b3218918" rel="noopener">Juan Domingo Vega Fernández</a> en LinkedIn</p>
+  </footer>
+
+  <script src="data/compendio-data.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
